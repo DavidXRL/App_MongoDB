@@ -1,18 +1,151 @@
 <ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>
-      Inicio
-    </ion-title>
-  </ion-toolbar>
+  <div style="position: relative; text-align: center; background-color: black;">
+    <img src="assets/public/uno.png" height="70px" width="100%" style="object-fit: cover;"/>
+    <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); color: white; font-size: 24px; font-weight: bold; text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7); background-color: rgba(0, 0, 0, 0.607); width: 100%; height: 75px; display: flex; justify-content: center; align-items: center; text-shadow: 2px 2px 4px #ff8000; font-size: xx-large;">
+      SOLARIS
+    </div>
+
+  </div>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Inicio</ion-title>
-    </ion-toolbar>
-  </ion-header>
 
-  <ion-button expand="full" routerLink="/login" color="warning" fill="outline">Iniciar Sesión</ion-button>
-  <ion-button expand="full" routerLink="/register" color="warning">Registro</ion-button>
-</ion-content>
+
+
+  <ion-content [fullscreen]="true">
+    <ion-header collapse="condense">
+      <ion-toolbar>
+        <ion-title size="large">Página de inicio</ion-title>
+      </ion-toolbar>
+    </ion-header>
+
+    <div class="image-container">
+      <img src="./assets/public/home.png" alt="Imagen de inicio">
+      <p class="overlay-text title-text">TU ALIADO EN GESTIÓN DE DATOS <span class="highlight">SOLARES</span></p>
+      <p style="margin-top: 50px;" class="overlay-text subtitle-text">Monitorea voltaje, corriente y carga en tiempo real</p>
+    </div>
+
+
+
+  <div style="margin-top: 20px; text-align: center !important;">
+    <ion-button style="width: 50%;" routerLink="/login"  fill="outline" class="custom-button">Iniciar Sesión</ion-button>
+    <ion-button style="width: 50%;" routerLink="/register" class="custom-button">Crear cuenta</ion-button>
+
+    <ion-input [(ngModel)]="ipMongo" type="text" style="margin-top: 20px;" placeholder="IP"> </ion-input>
+      <ion-button (click)="saveIp()" class="custom-button">Guardar IP</ion-button>
+
+  </div>
+
+
+  <div style="margin-top: 30px; position: relative; width: 100%; height: 100vh; display: flex; align-items: center; justify-content: center; text-align: center; color: white;">
+    <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: url('/assets/public/img_escriturapc.jpg') no-repeat center center/cover; filter: brightness(50%);"></div>
+    <div style="position: relative; padding: 20px; max-width: 90%; background: rgba(0, 0, 0, 0.6); border-radius: 10px;">
+        <p class="ion-text-justify" style="font-size: 16px; line-height: 1.5;">
+            <span class="highlight">Raven Technologies</span> es una empresa dedicada a la gestión de datos solares, ofreciendo soluciones innovadoras para el monitoreo y análisis de sistemas fotovoltaicos. Nuestro objetivo es optimizar el rendimiento de los paneles solares y garantizar un uso eficiente de la energía renovable.
+            <br><br>
+            Con nuestra plataforma, podrás acceder a información en tiempo real sobre el voltaje, corriente y carga de tus sistemas solares, permitiéndote tomar decisiones informadas y mejorar la eficiencia energética.
+        </p>
+    </div>
+</div>
+
+  </ion-content>
+
+  <style>
+
+
+
+    .title-header {
+      font-weight: bold;
+      font-size: 1.5rem;
+      text-align: center;
+    }
+
+    .highlight {
+      color: #ff8000;
+    }
+
+    .image-container {
+      position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 100%;
+    }
+
+    .image-container img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+
+    .overlay-text {
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      color: white;
+      font-weight: bold;
+      text-align: center;
+      padding: 10px 20px;
+      border-radius: 10px;
+      width: 90%;
+      max-width: 600px;
+    }
+
+    .title-text {
+      top: 40%;
+      font-size: clamp(1.2rem, 4vw, 2rem);
+    }
+
+    .subtitle-text {
+      top: 55%;
+      font-size: clamp(1rem, 3vw, 1.5rem);
+    }
+
+
+    .add {
+      display: flex;
+      justify-content: center;
+      margin-top: 20px;
+    }
+
+    .add img {
+      width: 80%;
+      max-width: 400px;
+      border-radius: 10px;
+    }
+
+
+    @media (max-width: 768px) {
+      .title-text {
+        top: 35%;
+      }
+      .subtitle-text {
+        top: 50%;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .overlay-text {
+        width: 95%;
+      }
+      .title-text {
+        top: 30%;
+        font-size: 1.2rem;
+      }
+      .subtitle-text {
+        top: 45%;
+        font-size: 1rem;
+      }
+
+      .custom-button {
+  --color: #ff8000; /* Color del texto */
+  --border-color: #ff8000; /* Color del borde en fill="outline" */
+  --background: transparent; /* Para outline */
+}
+
+.custom-button:not([fill="outline"]) {
+  --background: #ff8000;
+  --color: white; /* Color del texto para el botón relleno */
+}
+    }
+  </style>

@@ -44,7 +44,7 @@ export class RegisterPage  {
      try{
       await this.authService.register(userData);
       await loading.dismiss();
-      this.showAlert('Exit', 'Registro exitoso. Ahora puedes iniciar sesión.');
+      this.showAlert('Bienvenido', 'Tu cuenta ha sido creada. Ahora puedes iniciar sesión.');
       this.router.navigate(['/login']);
      }catch(error:any){
       await loading.dismiss();
@@ -66,8 +66,8 @@ export class RegisterPage  {
     async showAlert(header:string, message:string)
     {
   const alert = await this.alertController.create({
-    header, 
-    message, 
+    header,
+    message,
     buttons:['OK'],
   });
   await alert.present();

@@ -1,0 +1,153 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title class="ion-text-center" style="text-transform:uppercase;">
+      Panel de Control
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="content">
+  <div>
+    <ion-button (click)="loadData()" expand="full" class="custom-button">Datos del panel</ion-button>
+  </div>
+
+  <div *ngIf="loading" class="loading-message">
+    <ion-spinner name="circles"></ion-spinner>
+    <p>Cargando datos...</p>
+  </div>
+
+  <div class="data-container" style="width: 90%; margin: 0 auto;">
+    <ion-card class="animated-card">
+      <ion-card-header>
+        <ion-card-title>Panel de control</ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+        <p class="data-text">Voltaje: <strong>{{voltaje}}</strong></p>
+        <p class="data-text">Corriente: <strong>{{corriente}} %</strong></p>
+      </ion-card-content>
+    </ion-card>
+  </div>
+
+  <div class="buttons">
+    <ion-button (click)="sendCommand('Encender1')" class="custom-button">Encender dispositivo 1</ion-button>
+    <ion-button (click)="sendCommand('Apagar1')" style="color: #ff8000;" fill="clear">Apagar dispositivo 1</ion-button>
+    <ion-button (click)="sendCommand('Encender2')" class="custom-button">Encender dispositivo 2</ion-button>
+    <ion-button (click)="sendCommand('Apagar2')" style="color: #ff8000;" fill="clear">Apagar dispositivo 2</ion-button>
+  </div>
+
+
+  <div class="form-container">
+    <ion-item class="input-wrapper" style="border-radius: 10px; border-style:groove;">
+      <ion-label position="stacked">IP</ion-label>
+      <ion-input [(ngModel)]="ipAddress" placeholder="Ej: 192.168.1.100"></ion-input>
+    </ion-item>
+    <ion-button (click)="saveIp()" class="custom-button">Guardar IP</ion-button>
+  </div>
+
+
+</ion-content>
+
+<style>
+
+  .content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    height: 100%;
+  }
+
+
+  .custom-button {
+    --background: #ff8000; /* Naranja vibrante */
+    --color: white;
+    --padding-start: 20px;
+    --padding-end: 20px;
+    font-size: 12px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s ease-in-out;
+  }
+
+  .custom-button:hover {
+    transform: scale(1.05);
+    --background: #e67e00; /* Un tono más oscuro al hacer hover */
+  }
+
+  /* Estilos para el mensaje de carga */
+  .loading-message {
+    text-align: center;
+    margin-top: 20px;
+  }
+
+  .loading-message p {
+    margin-top: 10px;
+    font-size: 18px;
+    color: #ff8000; /* Naranja para el mensaje de carga */
+  }
+
+  /* Animación de fade-in y scale-in para los datos */
+  .data-container {
+    animation: fadeIn 1s ease-in-out, scaleIn 0.5s ease-out;
+    opacity: 0;
+    animation-fill-mode: forwards;
+  }
+
+  .animated-card {
+    animation: fadeIn 1s ease-in-out, scaleIn 0.5s ease-out;
+    opacity: 0;
+    animation-fill-mode: forwards;
+  }
+
+  /* Animaciones */
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+
+  @keyframes scaleIn {
+    from {
+      transform: scale(0.9);
+    }
+    to {
+      transform: scale(1);
+    }
+  }
+
+  /* Estilos para los textos de datos */
+  .data-text {
+    font-size: 18px;
+    color: #333;
+    margin: 5px 0;
+  }
+
+  .data-text strong {
+    color: #ff8000; /* Naranja para los datos destacados */
+  }
+
+  .buttons {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px; /* Espaciado entre los botones */
+  height: 35vh; /* O ajusta a la altura que necesites */
+}
+
+.form-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 15px; /* Espaciado entre elementos */
+}
+.input-wrapper {
+  width: 100%;
+  max-width: 300px; /* Limita el ancho del input */
+}
+
+</style>

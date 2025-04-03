@@ -35,3 +35,29 @@
 /* @import "@ionic/angular/css/palettes/dark.always.css"; */
 /* @import "@ionic/angular/css/palettes/dark.class.css"; */
 @import "@ionic/angular/css/palettes/dark.system.css";
+
+
+.custom-button {
+  --color: #ff8000;
+  --border-color: #ff8000;
+  --background: transparent;
+}
+
+.custom-button:not([fill="outline"]) {
+  --background: #ff8000;
+  --color: white;
+}
+
+*{
+  font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+
+// src/theme/variables.scss
+
+:root {
+  --ion-background-color: #000000;   /* Fondo de la aplicación */
+  --ion-text-color: #fff;         /* Color de texto blanco */
+}
+
+

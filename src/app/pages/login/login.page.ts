@@ -20,13 +20,13 @@ export class LoginPage implements OnInit {
   async login(){
     await this.authService.login({email: this.email, password:this.password});
     console.log("Usuario autenticado");
-    this.showAlert("Login","Usuario autenticado");
-    this.router.navigate(['/products']);
+    this.showAlert("Sesión iniciada.","Usuario autenticado");
+    this.router.navigate(['/panel']);
   }
 
   async showAlert(header:string, message:string){
     const alert = await this.alertController.create({
-      header, 
+      header,
       message,
       buttons:['OK'],
     });
